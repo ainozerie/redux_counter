@@ -1,24 +1,42 @@
-import logo from './logo.svg';
+import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 
+
 function App() {
+  const state = useSelector(state => state);
+  const dispatch = useDispatch();
+
+  const add = (event) => {
+    dispatch({
+      type: 'ADD',
+      payload: +event.target.value
+    })
+  }
+  const reset = (event) => {
+    dispatch({
+      type: 'RESET',
+      payload: +event.target.value
+    })
+  }
+  const remove = (event) => {
+    dispatch({
+      type: 'REMOVE',
+      payload: +event.target.value
+    })
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <div className='display'>{state}</div>
+      <div className='navigation'>
+        <button value='5' onClick={remove}>remove 5</button>
+        <button value='1' onClick={remove}>remove 1</button>
+        <button value='0' onClick={reset}>reset</button>
+        <button value='1' onClick={add}>add 1</button>
+        <button value='5' onClick={add}>add 5</button>
+      </div>
+    </main>
   );
 }
 
