@@ -28,7 +28,7 @@ function App() {
 
   return (
     <main>
-      <div className='display'>{state}</div>
+      <div className='display'>{state.counter}</div>
       <div className='navigation'>
         <button value='5' onClick={remove}>remove 5</button>
         <button value='1' onClick={remove}>remove 1</button>

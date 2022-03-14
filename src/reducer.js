@@ -1,13 +1,13 @@
-const reducer = (state = 0, action) => {
+const reducer = (state = {counter: 0}, action) => {
     switch (action.type) {
         case 'ADD':
-            return state + action.payload;
+            return {...state, counter: state.counter + action.payload};
         case 'RESET':
-            return action.payload;
+            return {...state, counter: action.payload};
         case 'REMOVE':
-            return state - action.payload;
+            return {...state, counter: state.counter - action.payload};
         default:
-            return 0;
+            return {...state, counter: 0};
     }
 }
 
